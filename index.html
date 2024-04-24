@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Enter a number between 2 and 10.</p>
+    <input type="number" name="first" id="first">
+    <p>by:</p>
+    <input type="number" name="multiplier" id="multiplier">
+
+    <br>
+    <br>
+    <button onclick="functionMultiply()">Formulate multiplication table.</button>
+
+    <div id="table"></div>
+
+    <script>
+        function functionMultiply(){
+            //save value inputted by user
+            var one = parseInt(document.getElementById('first').value);
+            var two = parseInt(document.getElementById('multiplier').value);
+
+            //check if numbers are between 2 and 10
+            if (isNaN(one) || isNaN(two) || one < 2 || two > 10 || two < 2 || one > 10)  {
+                alert('Enter values between 2 and 10.');
+                return;
+            } else {
+                //EY GENERATE IT 
+                functionTable(one, two);
+            }
+        }
+
+        function functionTable(one, two){
+            var mtable = "<table>";
+            var mhiel = 1;
+            do {
+                mtable += "<tr>";
+                var odal = 1;
+                do {
+                    mtable += "<td>" + (mhiel * odal) + "</td>";
+                    odal++;
+                } while (odal <= two);
+                mtable += "</tr>";
+                mhiel++;
+            } while (mhiel <= one);
+            mtable += "</table>";
+            document.getElementById('table').innerHTML = mtable;
+        }
+    </script>
+</body>
+</html>
